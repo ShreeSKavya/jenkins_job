@@ -1,16 +1,21 @@
 pipeline {
-    agent {
-          label 'slave-1'
-    }
+    agent none
+    
     
     stages {
         stage('BUILD') {
+            agent any
             steps {
                 sh 'sleep 5'
             }
         }
         
         stage('TEST') {
+
+            agent {
+                  label 'slave-1'
+            }
+
             steps {
                 sh 'sleep 5'
                 
@@ -18,6 +23,10 @@ pipeline {
         }
         
         stage('DEPLOY') {
+            agent {
+                  label 'slave-2'
+            }
+
             steps {
                 sh 'sleep 5'
             }
