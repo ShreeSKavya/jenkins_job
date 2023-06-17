@@ -1,10 +1,10 @@
 pipeline {
-    agent none
+    agent any
     
     
     stages {
         stage('BUILD') {
-            agent any
+            
             steps {
                 sh 'sleep 5'
             }
