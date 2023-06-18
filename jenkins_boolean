@@ -31,7 +31,7 @@ pipeline {
         stage('STAGE 3') {
             steps {
                 script {
-                    if(stageResult == flase) {
+                    if(stageResult == false) {
                         echo "STAGE 1 is not executed,hence execution of STAGE 3 occurs"
                     }
                 }
