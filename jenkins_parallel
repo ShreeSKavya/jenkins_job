@@ -1,0 +1,71 @@
+pipeline {
+    agent none
+    
+    environment {
+        DEPLOY_TO = 'PRODUCTION'
+    }
+    
+    stages {
+        stage('BUILD') {
+
+            agent any
+
+            environment {
+                BUILD_STAGE = 'YES'
+            }
+
+            steps {
+                sh 'sleep 5'
+            }
+        }
+        
+        stage('TEST MULTIPLE') {
+
+            parallel {
+                stage('Test') {
+                    agent {
+                        label 'slave-1'
+                    }
+                    steps {
+                        echo "Test is running"
+                        sh 'sleep 5'
+                    }
+                }
+
+                stage('QA') {
+                    agent {
+                        label 'slave-1'
+                    }
+                    steps {
+                        echo "QA is running"
+                        sh 'sleep 5'
+                    }
+                }
+
+                stage('prod') {
+                    agent {
+                        label 'slave-1'
+                    }
+                    steps {
+                        echo "prod is running"
+                        sh 'sleep 5'
+                    }
+                }
+            }
+
+            
+
+            
+        }
+        
+        stage('DEPLOY') {
+            agent {
+                  label 'slave-2'
+            }
+
+            steps {
+                sh 'sleep 5'
+            }
+        }
+    }
+}
