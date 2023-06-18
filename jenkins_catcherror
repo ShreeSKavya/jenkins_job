@@ -5,7 +5,7 @@ pipeline {
         stage('STAGE 1') {
             steps {
                 script {
-                    catchError(buildResult:'SUCCESS',stageResult:'FAILURE') {
+                    catchError(buildResult:'SUCCESS', stageResult:'FAILURE') {
                             sh '''
                                 pwd
                                 sleep 5
@@ -20,14 +20,11 @@ pipeline {
         stage('STAGE 2') {
             steps {
                 script {
-                    
                     sh '''
-                        pwd
-                        sleep 5
+                        pwd 
+                        sleep 2
                     '''
-                            
-                    }
-                    
+
                 }
             }
         }
@@ -35,15 +32,14 @@ pipeline {
         stage('STAGE 3') {
             steps {
                 script {
-                    
                     sh '''
-                        pwd
-                        sleep 5
+                        pwd 
+                        sleep 2
                     '''
-                            
-                    }
-                    
+
                 }
             }
         }
+
     }
+}
