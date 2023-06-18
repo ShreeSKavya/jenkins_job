@@ -1,18 +1,14 @@
 pipeline {
     agent none
     
-    environment {
-        DEPLOY_TO = 'PRODUCTION'
-    }
+    
     
     stages {
         stage('BUILD') {
 
             agent any
 
-            environment {
-                BUILD_STAGE = 'YES'
-            }
+            
 
             steps {
                 sh 'sleep 5'
