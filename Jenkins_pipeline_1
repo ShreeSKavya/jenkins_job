@@ -1,10 +1,19 @@
 pipeline {
-    agent any
+    agent none
     
+    environment {
+        DEPLOY_TO = 'PRODUCTION'
+    }
     
     stages {
         stage('BUILD') {
-            
+
+            agent any
+
+            environment {
+                BUILD_STAGE = 'YES'
+            }
+
             steps {
                 sh 'sleep 5'
             }
@@ -17,7 +26,8 @@ pipeline {
             }
 
             steps {
-                sh 'sleep 5'
+                echo "${env.DEPLOY_TO}"
+                
                 
             }
         }
