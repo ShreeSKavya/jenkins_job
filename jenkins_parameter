@@ -9,7 +9,7 @@ pipeline {
 
 
     stages {
-        stage('BIULD') {
+        stage('BUILD') {
             steps {
                 script {
                     def ENVIRONMENT = "${params.DEPLOY}"
