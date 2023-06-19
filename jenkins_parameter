@@ -7,11 +7,17 @@ pipeline {
 
     }
 
+
     stages {
-        stage('STAGE 1') {
+        stage('BIULD') {
             steps {
                 script {
-                    sh 'sleep 3'
+                    def ENVIRONMENT = "${params.DEPLOY}"
+                    if(ENVIRONMENT == 'TEST') {
+                        echo "Deploying to TEST....."
+                    } else if(ENVIRONMENT == "QA") {
+                        echo "Deploying to QA....."
+                    }
                 }
                 
             }
