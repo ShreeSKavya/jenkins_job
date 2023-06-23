@@ -7,7 +7,7 @@ pipeline {
     }
 
     stages {
-        stage('Build-maven') {
+        stage ('Build-maven') {
             steps {
                 sh '''
                     cd ./maven/simple-war
@@ -18,7 +18,7 @@ pipeline {
             }
         }
 
-        stage('Deploy-tomcat') {
+        stage ('Deploy-tomcat') {
             steps {
                 script {
                     deploy adapters: [tomcat9(credentialsId: 'tomcat-deploy', path: '', url: 'http://13.235.19.154:8080')], 
