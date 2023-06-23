@@ -10,13 +10,22 @@ pipeline {
         stage('Build-maven') {
             steps {
                 sh '''
-                    
+                    cd ./maven/simple-war
+                    mvn clean package
+                    cd ./target
+                    ls
                 '''
             }
         }
 
         stage('Deploy-tomcat'){
-
+            steps {
+                script {
+                    deploy adapters: [tomcat9(credentialsId: 'tomcat-deploy', path: '', url: 'http://13.235.19.154:8080')], 
+                    contextPath: '/itdefined-war-1.0.0', 
+                    war: 'maven/simple-war/target/itdefined-war-1.0.0.war'
+                }
+            }
         }
     }
 }
