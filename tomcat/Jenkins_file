@@ -10,14 +10,21 @@ pipeline {
         stage ('Build-maven') {
             steps {
                 sh '''
-                    cd ./maven/simple-war
+                    cd ./maven/simple-war/
                     mvn clean package
-                    cd ./target
+                    cd ./target/
                     ls
                 '''
             }
         }
 
+      stage ('Deploy-tomcat') {
+            steps {
+                script {
+                    
+                }
+            }
+      }
         
     }
 }
