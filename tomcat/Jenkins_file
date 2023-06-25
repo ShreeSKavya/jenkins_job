@@ -18,14 +18,6 @@ pipeline {
             }
         }
 
-        stage ('Deploy-tomcat') {
-            steps {
-                script {
-                    deploy adapters: [tomcat9(credentialsId: 'tomcat-deploy', path: '', url: 'http://13.126.65.72:8080')], 
-                    contextPath: '/itdefined-war-1.0.0', onFailure: false, 
-                    war: 'maven/simple-war/target/itdefined-war-1.0.0.war'
-                }
-            }
-        }
+        
     }
 }
