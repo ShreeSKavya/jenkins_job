@@ -1,0 +1,27 @@
+pipeline {
+  agent any 
+  stages {
+      stage('Build') {
+            steps {
+                sh 'pwd'
+            }
+      }
+  }
+  post {
+      always {
+          echo 'Always'
+      }
+      success {
+          echo 'Only on success'
+      }
+      failure {
+          echo 'Only on Failure'
+      }
+      unstable {
+          echo 'only if the run is unstable'
+      }
+      changed {
+          echo 'only if the status changed from success to failure or vice versa'
+      }
+  }
+}
